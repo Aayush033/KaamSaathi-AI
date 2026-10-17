@@ -105,8 +105,11 @@ def check_db_health() -> bool:
 
 @contextmanager
 def get_db():
-    conn = sqlite3.connect(settings.DB_PATH)
+    conn = sqlite3.connect(settings.DB_PATH, timeout=5.0)
     conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("PRAGMA synchronous=NORMAL")
+    conn.execute("PRAGMA cache_size=-64000")
     try:
         yield conn
     finally:

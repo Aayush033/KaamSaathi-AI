@@ -25,6 +25,10 @@ app = FastAPI(
 allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "http://localhost:8000,http://127.0.0.1:8000")
 allowed_origins = [orig.strip() for orig in allowed_origins_env.split(",") if orig.strip()]
 
+from fastapi.middleware.gzip import GZipMiddleware
+
+app.add_middleware(GZipMiddleware, minimum_size=1000)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,

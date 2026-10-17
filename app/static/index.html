@@ -21,23 +21,23 @@
 
     <div class="header-actions">
       <!-- Role Switcher -->
-      <select id="workerRoleSelect" class="form-select" style="max-width: 170px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" title="Select your work category">
+      <select id="workerRoleSelect" class="form-select" style="max-width: 170px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" title="Select your work category" aria-label="Select your worker category">
         <option value="Food Delivery">🛵 Food Delivery</option>
         <option value="Cab/Ride-hailing">🚕 Cab / Auto Driver</option>
         <option value="Construction/Daily Wage">🔨 Construction / Daily Wage</option>
       </select>
 
       <!-- Language Selector -->
-      <select id="langSelect" class="form-select" style="max-width: 110px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" title="Choose Language">
+      <select id="langSelect" class="form-select" style="max-width: 110px; padding: 0.4rem 0.6rem; font-size: 0.85rem;" title="Choose Language" aria-label="Select Application Language">
         <option value="en">English</option>
         <option value="hi">हिंदी (Hindi)</option>
       </select>
 
       <!-- Theme Toggle -->
-      <button id="themeToggleBtn" class="btn btn-outline btn-sm" title="Toggle Dark/Light Mode">🌙</button>
+      <button id="themeToggleBtn" class="btn btn-outline btn-sm" title="Toggle Dark/Light Mode" aria-label="Toggle Dark and Light Mode">🌙</button>
 
       <!-- Settings / Key Config -->
-      <button class="btn btn-outline btn-sm" onclick="App.openModal('settingsModal')" title="Settings & API Key">⚙️</button>
+      <button class="btn btn-outline btn-sm" onclick="App.openModal('settingsModal')" title="Settings & API Key" aria-label="Open Settings and System Health">⚙️</button>
     </div>
   </header>
 
@@ -96,7 +96,7 @@
         </div>
 
         <div class="chat-container">
-          <div id="chatMessages" class="chat-messages">
+          <div id="chatMessages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat messages history">
             <div class="chat-bubble assistant">
               <strong style="color: var(--primary);">नमस्ते / Welcome to KaamSaathi AI!</strong><br>
               I am your digital companion. I can help you understand your real daily earnings, explain work agreements, prepare complaint letters for unpaid payouts, and explore government welfare schemes like e-Shram or PM-SYM.
@@ -106,7 +106,7 @@
           </div>
 
           <!-- Suggested Prompt Chips -->
-          <div class="prompt-chips">
+          <div class="prompt-chips" role="group" aria-label="Quick prompt suggestions">
             <button class="chip" onclick="App.sendChatMessage('Calculate my earnings this week and explain them to me')">📊 Calculate my earnings this week</button>
             <button class="chip" onclick="App.sendChatMessage('What should I do if a customer threatens me or gets aggressive?')">🛡️ What to do if customer threatens me?</button>
             <button class="chip" onclick="App.sendChatMessage('Find welfare schemes that may apply to my situation in India')">🏛️ Find welfare schemes for me</button>
@@ -115,12 +115,12 @@
           </div>
 
           <!-- Input Bar with Speech Recognition -->
-          <div class="chat-input-bar">
-            <button id="micBtn" class="btn btn-outline btn-sm" onclick="App.startVoiceInput()" title="Speak in Hindi or English (Voice Input)" style="font-size: 1.1rem; padding: 0.6rem 0.8rem;">
+          <div class="chat-input-bar" role="search">
+            <button id="micBtn" class="btn btn-outline btn-sm" onclick="App.startVoiceInput()" title="Speak in Hindi or English (Voice Input)" aria-label="Voice input via microphone" style="font-size: 1.1rem; padding: 0.6rem 0.8rem;">
               🎤
             </button>
-            <input type="text" id="chatInput" class="form-control" placeholder="Ask a question or tap mic to speak..." data-i18n="chat_placeholder">
-            <button class="btn btn-primary" onclick="App.sendChatMessage()" data-i18n="send">Send</button>
+            <input type="text" id="chatInput" class="form-control" placeholder="Ask a question or tap mic to speak..." data-i18n="chat_placeholder" aria-label="Enter your message or question">
+            <button class="btn btn-primary" onclick="App.sendChatMessage()" data-i18n="send" aria-label="Send message to AI assistant">Send</button>
           </div>
         </div>
       </section>
